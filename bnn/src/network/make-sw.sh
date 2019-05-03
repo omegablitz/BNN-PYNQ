@@ -11,7 +11,7 @@
  #
  #  2.  Redistributions in binary form must reproduce the above copyright
  #      notice, this list of conditions and the following disclaimer in the
- #      documentation and/or other materials provided with the distribution.
+ #      documentation and/or other materials proviGuded with the distribution.
  #
  #  3.  Neither the name of the copyright holder nor the names of its
  #      contributors may be used to endorse or promote products derived from
@@ -54,14 +54,11 @@ NETWORK=$1
 RUNTIME=$2
 
 if [ -z "$XILINX_BNN_ROOT" ]; then
-  echo "Need to set XILINX_BNN_ROOT"
-  exit 1
+  XILINX_BNN_ROOT=/home/xilinx/BNN-PYNQ/bnn/src
 fi
 
 if [ -z "$VIVADOHLS_INCLUDE_PATH" ]; then
-  echo "Need to set VIVADOHLS_INCLUDE_PATH to rebuild from source"
-  echo "The pre-compiled shared objects will be included"
-  exit 1
+  VIVADOHLS_INCLUDE_PATH==/home/xilinx/vivado/include
 fi  
 
 OLD_DIR=$(pwd)
@@ -80,8 +77,9 @@ elif [[ ("$BOARD" == "Ultra96") ]]; then
   DEF_BOARD="ULTRA"
   PLATFORM="ultra96"
 else
-  echo "Error: BOARD variable has to be Ultra96, Pynq-Z1 and Pynq-Z2 Board."
-  exit 1
+  echo "Warning: BOARD variable not set, assuming Pynq Z1/Z2."
+  DEF_BOARD="PYNQ"
+  PLATFORM="pynqZ1-Z2"  
 fi
 
 TINYCNN_PATH=$XILINX_BNN_ROOT/xilinx-tiny-cnn
@@ -113,3 +111,9 @@ elif [[ ("$RUNTIME" == "python_hw") ]]; then
 fi
 
 echo "Output at $OUTPUT_FILE"
+
+if [[ ("$INSTALL" == "1") ]]; then 
+  echo "Installing..."
+  cp $OUTPUT_FILE.so $XILINX_BNN_ROOT/../libraries/$PLATFORM/$RUNTIME-$NETWORK-$PLATFORM.so
+fi
+
