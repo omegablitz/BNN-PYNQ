@@ -50,13 +50,12 @@ import theano.tensor as T
 
 import lasagne
 
-import cPickle as pickle
+import pickle
 import gzip
 
 import quantized_net
 import cnv
 
-from pylearn2.datasets.zca_dataset import ZCA_Dataset   
 from pylearn2.datasets.cifar10 import CIFAR10 
 from pylearn2.utils import serial
 
@@ -66,9 +65,9 @@ if __name__ == "__main__":
     # Parse some command line options
     parser = ArgumentParser(
         description="Train the CNV network on the Cifar10 dataset")
-    parser.add_argument('-ab', '--activation-bits', type=int, default=1, choices=[1, 2],
+    parser.add_argument('-ab', '--activation-bits', type=int, default=1, choices=[1, 2, 4],
         help="Quantized the activations to the specified number of bits, default: %(default)s")
-    parser.add_argument('-wb', '--weight-bits', type=int, default=1, choices=[1, 2],
+    parser.add_argument('-wb', '--weight-bits', type=int, default=1, choices=[1, 2, 4],
         help="Quantized the weights to the specified number of bits, default: %(default)s")
     args = parser.parse_args()
 
