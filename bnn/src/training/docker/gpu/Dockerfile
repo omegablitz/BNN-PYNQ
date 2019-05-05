@@ -1,4 +1,4 @@
-FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
+FROM nvidia/cuda:9.1-cudnn7-devel-ubuntu16.04
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
@@ -15,6 +15,7 @@ ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 RUN apt-get update &&\
     apt-get upgrade -y &&\
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends --fix-missing\
+        cmake\
         g++\
         gfortran\
         git\
@@ -26,6 +27,7 @@ RUN apt-get update &&\
         unzip\
         virtualenv\
         wget\
+        vim\
         &&\
     apt-get clean &&\
     apt-get autoremove &&\
@@ -37,6 +39,7 @@ RUN cd /root &&\
     . mlpy/bin/activate &&\
     pip install --upgrade pip &&\
     pip install git+https://github.com/Theano/Theano.git@rel-0.9.0beta1 &&\
+    pip install Cython &&\
     pip install https://github.com/Lasagne/Lasagne/archive/master.zip &&\
     pip install Pillow &&\
     pip install bitstring &&\
@@ -46,6 +49,17 @@ RUN cd /root &&\
     git clone https://github.com/lisa-lab/pylearn2 &&\
     cd pylearn2 &&\
     python setup.py develop &&\
+    cd /root &&\
+    git clone https://github.com/Theano/libgpuarray.git &&\
+    cd libgpuarray &&\
+    mkdir Build &&\
+    cd Build &&\
+    cmake .. -DCMAKE_BUILD_TYPE=Release &&\
+    make &&\
+    make install &&\
+    cd .. &&\
+    python setup.py build &&\
+    python setup.py install &&\
     rm -rf /root/.cache/pip
 
 # Set .bashrc for virtualenv PYLEARN2, THEANO
