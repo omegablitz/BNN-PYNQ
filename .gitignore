@@ -3,3 +3,5 @@ xilinx-tiny-cnn/
 notebooks/.ipynb_checkpoints/
 *.swp
 *.pyc
+.DS_Store
+.vscode/

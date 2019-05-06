@@ -34,7 +34,7 @@
  #
  # @file hls-syn.tcl
  #
- # Tcl script for HLS synthesis of the target network (this script is 
+ # Tcl script for HLS synthesis of the target network (this script is
  # automatically launched when executing make-hw.sh script)
  #
  #
@@ -45,10 +45,10 @@ set config_proj_name [lindex $argv 2]
 puts "HLS project: $config_proj_name"
 set config_hwsrcdir [lindex $argv 3]
 puts "HW source dir: $config_hwsrcdir"
-set directory_params [lindex $argv 4] 
-set test_image [lindex $argv 5] 
-set expected_result [lindex $argv 6] 
-set config_proj_part [lindex $argv 7] 
+set directory_params [lindex $argv 4]
+set test_image [lindex $argv 5]
+set expected_result [lindex $argv 6]
+set config_proj_part [lindex $argv 7]
 
 
 set config_bnnlibdir "$::env(XILINX_BNN_ROOT)/library/hls"
@@ -57,7 +57,7 @@ set config_tinycnn "$::env(XILINX_BNN_ROOT)/xilinx-tiny-cnn"
 puts "BNN HLS library: $config_bnnlibdir"
 
 set config_toplevelfxn "BlackBoxJam"
-set config_clkperiod [lindex $argv 8] 
+set config_clkperiod [lindex $argv 8]
 
 # set up project
 open_project $config_proj_name
@@ -76,7 +76,7 @@ config_interface -m_axi_addr64
 
 # syntesize and export
 create_clock -period $config_clkperiod -name default
-csim_design -argv "$directory_params $test_image 10 $expected_result" -compiler clang
+#csim_design -argv "$directory_params $test_image 10 $expected_result" -compiler clang
 csynth_design
 export_design -format ip_catalog
 exit 0
