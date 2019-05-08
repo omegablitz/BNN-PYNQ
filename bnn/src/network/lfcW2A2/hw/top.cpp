@@ -50,10 +50,10 @@
 #include "activations.hpp"
 #include "interpret.hpp"
 
-static BinaryWeights<L0_SIMD,L0_PE,L0_WMEM> weights0;
-static BinaryWeights<L1_SIMD,L1_PE,L1_WMEM> weights1;
-static BinaryWeights<L2_SIMD,L2_PE,L2_WMEM> weights2;
-static BinaryWeights<L3_SIMD,L3_PE,L3_WMEM> weights3;
+static FixedPointWeights<L0_SIMD,ap_int<L0_WPI>,L0_PE,L0_WMEM> weights0;
+static FixedPointWeights<L1_SIMD,ap_int<L1_WPI>,L1_PE,L1_WMEM> weights1;
+static FixedPointWeights<L2_SIMD,ap_int<L2_WPI>,L2_PE,L2_WMEM> weights2;
+static FixedPointWeights<L3_SIMD,ap_int<L3_WPI>,L3_PE,L3_WMEM> weights3;
 
 static ThresholdsActivation<L0_TMEM,L0_PE,L0_API,ap_int<16>,ap_int<L0_API>,-1> threshs0;
 static ThresholdsActivation<L1_TMEM,L1_PE,L1_API,ap_int<16>,ap_int<L1_API>,-1> threshs1;
@@ -130,13 +130,13 @@ void DoCompute(ap_uint<64> *in, ap_uint<64> *out, const unsigned int numReps) {
   const unsigned int outWordsPerImg = outBitsPadded / 64;
 
   Mem2Stream_Batch<64, inBytesPadded>(in, memInStrm, numReps);
-  StreamingFCLayer_Batch<L0_MW, L0_MH, L0_SIMD, L0_PE, Recast<Binary>, Slice<ap_int<2>>, Recast<Binary>>
+  StreamingFCLayer_Batch<L0_MW, L0_MH, L0_SIMD, L0_PE, Recast<Binary>, Slice<ap_int<2>>, Identity>
     (memInStrm, inter0, weights0, threshs0, numReps, ap_resource_lut());
-  StreamingFCLayer_Batch<L1_MW, L1_MH, L1_SIMD, L1_PE, Slice<ap_int<2>>, Slice<ap_int<2>>, Recast<Binary>>
+  StreamingFCLayer_Batch<L1_MW, L1_MH, L1_SIMD, L1_PE, Slice<ap_int<2>>, Slice<ap_int<2>>, Identity>
     (inter0, inter1, weights1, threshs1, numReps, ap_resource_lut());
-  StreamingFCLayer_Batch<L2_MW, L2_MH, L2_SIMD, L2_PE, Slice<ap_int<2>>, Slice<ap_int<2>>, Recast<Binary>>
+  StreamingFCLayer_Batch<L2_MW, L2_MH, L2_SIMD, L2_PE, Slice<ap_int<2>>, Slice<ap_int<2>>, Identity>
     (inter1, inter2, weights2, threshs2, numReps, ap_resource_lut());
-  StreamingFCLayer_Batch<L3_MW, L3_MH, L3_SIMD, L3_PE, Slice<ap_int<2>>, Slice<ap_int<1>>, Recast<Binary>>
+  StreamingFCLayer_Batch<L3_MW, L3_MH, L3_SIMD, L3_PE, Slice<ap_int<2>>, Slice<ap_int<1>>, Identity>
     (inter2, memOutStrm, weights3, threshs3, numReps, ap_resource_lut());
   Stream2Mem_Batch<64, outBytesPadded>(memOutStrm, out, numReps);
 }
