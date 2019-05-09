@@ -18,7 +18,7 @@ if __name__ == "__main__":
     WeightsPrecisions_fractional =    [0 , 0 , 0 , 0 , 0 , 0 , 0, 0, 0]
     ActivationPrecisions_fractional = [0 , 0 , 0 , 0 , 0 , 0 , 0, 0, 0]
     InputPrecisions_fractional =      [7 , 0 , 0 , 0 , 0 , 0 , 0, 0, 0]
-    WeightsPrecisions_integer =       [1 , 1 , 1 , 1 , 1 , 1 , 1, 1, 1]
+    WeightsPrecisions_integer =       [2 , 2 , 2 , 2 , 2 , 2 , 2, 2, 2]
     ActivationPrecisions_integer =    [2 , 2 , 2 , 2 , 2 , 2 , 2, 2, 1]
     InputPrecisions_integer =         [1 , 2 , 2 , 2 , 2 , 2 , 2, 2, 2]
 

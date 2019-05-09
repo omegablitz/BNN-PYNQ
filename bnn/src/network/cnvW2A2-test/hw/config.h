@@ -24,7 +24,7 @@
 #define L0_PE 16
 #define L0_WMEM 36
 #define L0_TMEM 4
-#define L0_WPI 1
+#define L0_WPI 2
 #define L0_API 2
 #define L0_WPF 0
 #define L0_APF 0
@@ -47,7 +47,7 @@
 #define L1_PE 32
 #define L1_WMEM 72
 #define L1_TMEM 2
-#define L1_WPI 1
+#define L1_WPI 2
 #define L1_API 2
 #define L1_WPF 0
 #define L1_APF 0
@@ -70,7 +70,7 @@
 #define L2_PE 16
 #define L2_WMEM 288
 #define L2_TMEM 8
-#define L2_WPI 1
+#define L2_WPI 2
 #define L2_API 2
 #define L2_WPF 0
 #define L2_APF 0
@@ -93,7 +93,7 @@
 #define L3_PE 16
 #define L3_WMEM 576
 #define L3_TMEM 8
-#define L3_WPI 1
+#define L3_WPI 2
 #define L3_API 2
 #define L3_WPF 0
 #define L3_APF 0
@@ -116,7 +116,7 @@
 #define L4_PE 4
 #define L4_WMEM 4608
 #define L4_TMEM 64
-#define L4_WPI 1
+#define L4_WPI 2
 #define L4_API 2
 #define L4_WPF 0
 #define L4_APF 0
@@ -139,7 +139,7 @@
 #define L5_PE 1
 #define L5_WMEM 36864
 #define L5_TMEM 256
-#define L5_WPI 1
+#define L5_WPI 2
 #define L5_API 2
 #define L5_WPF 0
 #define L5_APF 0
@@ -158,7 +158,7 @@
 #define L6_TMEM 512
 #define L6_MW 256
 #define L6_MH 512
-#define L6_WPI 1
+#define L6_WPI 2
 #define L6_API 2
 #define L6_WPF 0
 #define L6_APF 0
@@ -177,7 +177,7 @@
 #define L7_TMEM 512
 #define L7_MW 512
 #define L7_MH 512
-#define L7_WPI 1
+#define L7_WPI 2
 #define L7_API 2
 #define L7_WPF 0
 #define L7_APF 0
@@ -196,7 +196,7 @@
 #define L8_TMEM 16
 #define L8_MW 512
 #define L8_MH 64
-#define L8_WPI 1
+#define L8_WPI 2
 #define L8_API 1
 #define L8_WPF 0
 #define L8_APF 0
