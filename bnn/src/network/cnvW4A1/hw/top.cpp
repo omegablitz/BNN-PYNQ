@@ -59,14 +59,14 @@ static FixedPointWeights<L6_SIMD, ap_int<L6_WPI>, L6_PE, L6_WMEM>   weights6;
 static FixedPointWeights<L7_SIMD, ap_int<L7_WPI>, L7_PE, L7_WMEM>   weights7;
 static FixedPointWeights<L8_SIMD, ap_int<L8_WPI>, L8_PE, L8_WMEM>   weights8;
 
-static ThresholdsActivation<L0_TMEM, L0_PE, L0_API, ap_fixed<24, 16>, ap_int<L0_API>, -1> 	threshs0;
-static ThresholdsActivation<L1_TMEM, L1_PE, L1_API, ap_int<16>, ap_int<L1_API>, -1>  	  	threshs1;
-static ThresholdsActivation<L2_TMEM, L2_PE, L2_API, ap_int<16>, ap_int<L2_API>, -1>  	  	threshs2;
-static ThresholdsActivation<L3_TMEM, L3_PE, L3_API, ap_int<16>, ap_int<L3_API>, -1> 	  	threshs3;
-static ThresholdsActivation<L4_TMEM, L4_PE, L4_API, ap_int<16>, ap_int<L4_API>, -1>  	  	threshs4;
-static ThresholdsActivation<L5_TMEM, L5_PE, L5_API, ap_int<16>, ap_int<L5_API>, -1>       	threshs5;
-static ThresholdsActivation<L6_TMEM, L6_PE, L6_API, ap_int<16>, ap_int<L6_API>, -1>  	  	threshs6;
-static ThresholdsActivation<L7_TMEM, L7_PE, L7_API, ap_int<16>, ap_int<L7_API>, -1>  	  	threshs7;
+static ThresholdsActivation<L0_TMEM, L0_PE, L0_API, ap_fixed<24, 16>, ap_int<L0_API>> 	threshs0;
+static ThresholdsActivation<L1_TMEM, L1_PE, L1_API, ap_int<16>, ap_int<L1_API>>  	  	threshs1;
+static ThresholdsActivation<L2_TMEM, L2_PE, L2_API, ap_int<16>, ap_int<L2_API>>  	  	threshs2;
+static ThresholdsActivation<L3_TMEM, L3_PE, L3_API, ap_int<16>, ap_int<L3_API>> 	  	threshs3;
+static ThresholdsActivation<L4_TMEM, L4_PE, L4_API, ap_int<16>, ap_int<L4_API>>  	  	threshs4;
+static ThresholdsActivation<L5_TMEM, L5_PE, L5_API, ap_int<16>, ap_int<L5_API>>       	threshs5;
+static ThresholdsActivation<L6_TMEM, L6_PE, L6_API, ap_int<16>, ap_int<L6_API>>  	  	threshs6;
+static ThresholdsActivation<L7_TMEM, L7_PE, L7_API, ap_int<16>, ap_int<L7_API>>  	  	threshs7;
 
 unsigned int paddedSizeHW(unsigned int in, unsigned int padTo) {
   if(in % padTo == 0) {
