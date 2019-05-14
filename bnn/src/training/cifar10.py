@@ -93,7 +93,7 @@ if __name__ == "__main__":
     print("W_LR_scale = "+str(learning_parameters.W_LR_scale))
     
     # Training parameters
-    num_epochs = 500
+    num_epochs = 1
     print("num_epochs = "+str(num_epochs))
     
     # Decaying LR 
