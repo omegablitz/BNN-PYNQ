@@ -42,8 +42,8 @@ if __name__ == "__main__":
     # simdCounts = [64, 32, 64,  8]
     # peCounts   = [32, 64, 32, 16]
 
-    simdCounts = [32, 16, 32,  4]
-    peCounts   = [16, 32, 16, 8]
+    simdCounts = [32, 32, 32,  8]
+    peCounts   = [32, 64, 32, 16]
 
     WeightsPrecisions_fractional    = [0, 0, 0, 0]
     ActivationPrecisions_fractional = [0, 0, 0, 0]
